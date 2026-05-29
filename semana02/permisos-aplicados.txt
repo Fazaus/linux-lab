@@ -1,0 +1,81 @@
+organized/:
+total 24
+drwxr-xr-x 2 fabi fabi 4096 May 29 04:34 config
+drwxr-xr-x 2 fabi fabi 4096 May 29 04:34 documents
+drwxr-xr-x 2 fabi fabi 4096 May 29 04:34 images
+drwxr-xr-x 2 fabi fabi 4096 May 29 04:34 logs
+drwxr-xr-x 2 fabi fabi 4096 May 29 04:34 scripts
+drwxr-xr-x 2 fabi fabi 4096 May 29 04:34 temp
+
+organized/config:
+total 32
+-rw-r--r-- 1 fabi fabi 25 May 29 04:23 config_1.conf
+-rw-r--r-- 1 fabi fabi 25 May 29 04:23 config_2.conf
+-rw-r--r-- 1 fabi fabi 25 May 29 04:23 config_3.conf
+-rw-r--r-- 1 fabi fabi 25 May 29 04:23 config_4.conf
+-rw-r--r-- 1 fabi fabi 15 May 29 04:23 settings_1.json
+-rw-r--r-- 1 fabi fabi 15 May 29 04:23 settings_2.json
+-rw-r--r-- 1 fabi fabi 15 May 29 04:23 settings_3.json
+-rw-r--r-- 1 fabi fabi 15 May 29 04:23 settings_4.json
+
+organized/documents:
+total 64
+-rw-r--r-- 1 fabi fabi    0 May 29 04:16 README.md
+-rw-r--r-- 1 fabi fabi    0 May 29 04:17 analisis-permisos.md
+-rw-r--r-- 1 fabi fabi   22 May 29 04:23 documento_1.txt
+-rw-r--r-- 1 fabi fabi   22 May 29 04:23 documento_2.txt
+-rw-r--r-- 1 fabi fabi   22 May 29 04:23 documento_3.txt
+-rw-r--r-- 1 fabi fabi   22 May 29 04:23 documento_4.txt
+-rw-r--r-- 1 fabi fabi   22 May 29 04:23 documento_5.txt
+-rw-r--r-- 1 fabi fabi 3039 May 29 04:23 estado-inicial.txt
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 notas_1.md
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 notas_2.md
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 notas_3.md
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 notas_4.md
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 notas_5.md
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 reporte_1.doc
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 reporte_2.doc
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 reporte_3.doc
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 reporte_4.doc
+-rw-r--r-- 1 fabi fabi   10 May 29 04:23 reporte_5.doc
+
+organized/images:
+total 40
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 foto_1.jpg
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 foto_2.jpg
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 foto_3.jpg
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 foto_4.jpg
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 foto_5.jpg
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 screenshot_1.png
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 screenshot_2.png
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 screenshot_3.png
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 screenshot_4.png
+-rw-r--r-- 1 fabi fabi 14 May 29 04:23 screenshot_5.png
+
+organized/logs:
+total 28
+-rw-r--r-- 1 fabi fabi 89 May 29 04:23 app_1.log
+-rw-r--r-- 1 fabi fabi 89 May 29 04:23 app_2.log
+-rw-r--r-- 1 fabi fabi 89 May 29 04:23 app_3.log
+-rw-r--r-- 1 fabi fabi 54 May 29 04:23 sistema_1.log
+-rw-r--r-- 1 fabi fabi 54 May 29 04:23 sistema_2.log
+-rw-r--r-- 1 fabi fabi 54 May 29 04:23 sistema_3.log
+-rw-r--r-- 1 fabi fabi 54 May 29 04:23 sistema_4.log
+
+organized/scripts:
+total 48
+-rwxr-xr-x 1 fabi fabi 1294 May 29 04:21 generate-messy-files.sh
+-rwxr-xr-x 1 fabi fabi 1885 May 29 04:33 organize-files.sh
+-rwxr-xr-x 1 fabi fabi   35 May 29 04:23 script_1.sh
+-rwxr-xr-x 1 fabi fabi   35 May 29 04:23 script_2.sh
+-rwxr-xr-x 1 fabi fabi   35 May 29 04:23 script_3.sh
+-rwxr-xr-x 1 fabi fabi   35 May 29 04:23 script_4.sh
+-rwxr-xr-x 1 fabi fabi   35 May 29 04:23 script_5.sh
+-rwxr-xr-x 1 fabi fabi   48 May 29 04:23 utilidad_1.py
+-rwxr-xr-x 1 fabi fabi   48 May 29 04:23 utilidad_2.py
+-rwxr-xr-x 1 fabi fabi   48 May 29 04:23 utilidad_3.py
+-rwxr-xr-x 1 fabi fabi   48 May 29 04:23 utilidad_4.py
+-rwxr-xr-x 1 fabi fabi   48 May 29 04:23 utilidad_5.py
+
+organized/temp:
+total 0
