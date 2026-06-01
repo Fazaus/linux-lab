@@ -58,5 +58,39 @@ case "${1:-}" in
     --help|-h) uso ;;
 esac
 
+# === Verificacion 1: existencia del directorio ===
+verificar_directorio() {
+    log "INFO" "Verificando directorio: $DIR_BACKUP"
+    
+    if [ ! -e "$DIR_BACKUP" ]; then
+        log "ERROR" "El directorio '$DIR_BACKUP' no existe."
+        return 1
+    fi
+
+    if [ ! -d "$DIR_BACKUP" ]; then
+        log "ERROR" "'$DIR_BACKUP' existe pero no es un directorio."
+        return 1
+    fi
+
+    if [ ! -r "$DIR_BACKUP" ]; then
+        log "ERROR" "Sin permiso de lectura en '$DIR_BACKUP'."
+        return 1
+    fi
+
+    log "OK" "Directorio accesible: $DIR_BACKUP"
+    return 0
+}
+
 # Asegurar que el directorio de logs existe
 mkdir -p "$DIR_LOGS"
+
+# === Inicio del reporte ===
+log "INFO" "=== backup-check.sh v$VERSION - Inicio ==="
+log "INFO" "Directorio objetivo: $DIR_BACKUP"
+
+# Ejecutar verificaciones en orden.
+# Si el directorio no existe, no tiene sentido continuar.
+if ! verificar_directorio; then
+    log "ERROR" "Verificacion abortada: directorio inaccesible."
+    exit 1
+fi
