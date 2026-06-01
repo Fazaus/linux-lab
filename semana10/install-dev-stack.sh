@@ -156,6 +156,70 @@ instalar_dev_stack() {
     # Puedes añadir más si quieres: unzip, tmux, shellcheck, etc.
 }
 
+# ===== CONFIGURACION DE GIT (solo advertencia) =====
+configurar_git_global() {
+    log STEP "Verificando configuración global de Git"
+    if ! git config --global user.name &>/dev/null; then
+        log WARN "Git: user.name no configurado globalmente"
+        log INFO "Ejecuta: git config --global user.name 'Tu Nombre'"
+    fi
+    if ! git config --global user.email &>/dev/null; then
+        log WARN "Git: user.email no configurado globalmente"
+        log INFO "Ejecuta: git config --global user.email 'tu@email.com'"
+    fi
+    if git config --global user.name &>/dev/null && git config --global user.email &>/dev/null; then
+        log OK "Git global configurado: $(git config --global user.name) <$(git config --global user.email)>"
+    fi
+}
+
+# ===== RESUMEN FINAL =====
+mostrar_resumen() {
+    local total_nuevo=${#PAQUETES_INSTALADOS[@]}
+    local total_omitido=${#PAQUETES_OMITIDOS[@]}
+
+    echo ""
+    echo "========================"
+    echo " RESUMEN DE INSTALACION"
+    echo "========================"
+    echo " Nuevos instalados : $total_nuevo"
+    echo " Ya existian       : $total_omitido"
+    echo " Errores           : $ERRORES"
+    echo "========================"
+
+    if [ $ERRORES -eq 0 ]; then
+        log OK "Instalacion completada exitosamente"
+        echo ""
+        echo "Ejecuta: ./verify-install.sh"
+        echo "Para verificar la instalacion."
+    else
+        log WARN "Instalacion completada con $ERRORES errores"
+        echo "Revisa $LOG_FILE para detalles."
+    fi
+}
+
+# ===== MAIN =====
+main() {
+    echo ""
+    echo "========================"
+    echo " DEV STACK INSTALLER v$VERSION"
+    echo "========================"
+    echo ""
+
+    if [ "$EUID" -ne 0 ]; then
+        log ERROR "Este script requiere privilegios root."
+        log INFO "Ejecuta: sudo $0"
+        exit 1
+    fi
+
+    detectar_os
+    instalar_dev_stack
+    configurar_git_global
+    mostrar_resumen
+}
+
+# Ejecutar main con todos los argumentos
+main "$@"
+
 # Inicializar log
 echo "Dev Stack Installer v$VERSION" > "$LOG_FILE"
 echo "Iniciado: $TIMESTAMP" >> "$LOG_FILE"
