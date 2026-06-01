@@ -52,8 +52,28 @@ registrar() {
     printf "[%s] [%-7s] %s\n" "$ts" "$nivel" "$mensaje" | tee -a "$LOGFILE"
 }
 
+resumen_log() {
+    echo ""
+    echo "=========================================="
+    echo "           RESUMEN DE LA SESION"
+    echo "=========================================="
+
+    local total alertas
+    total=$(grep -c "\[INFO   \]" "$LOGFILE" 2>/dev/null || echo 0)
+    alertas=$(grep -c "\[ALERTA \]" "$LOGFILE" 2>/dev/null || echo 0)
+
+    printf "%-25s %d\n" "Comprobaciones:" "$total"
+    printf "%-25s %d\n" "Alertas:" "$alertas"
+    echo ""
+    echo "Ultimas entradas:"
+    tail -3 "$LOGFILE" | while IFS= read -r linea; do
+        echo "$linea"
+    done
+    echo "=========================================="
+}
+
 # Manejo de Ctrl+C: mostrar resumen antes de salir
-trap 'echo ""; registrar "INFO" "Monitor detenido por el usuario."; exit 0' INT
+trap 'echo ""; resumen_log; registrar "INFO" "Monitor detenido."; exit 0' INT
 
 registrar "INFO" "Iniciando monitor - intervalo: ${INTERVALO}s"
 registrar "INFO" "Umbrales: disco=${UMBRAL_DISCO}% RAM=${UMBRAL_RAM}%"
@@ -96,3 +116,6 @@ while [ $# -gt 0 ]; do
         *)              echo "Opcion desconocida: $1"; uso ;;
     esac
 done
+
+resumen_log
+registrar "INFO" "Monitor finalizado tras $((iteracion-1)) iteraciones."
