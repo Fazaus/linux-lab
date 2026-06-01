@@ -53,14 +53,15 @@ for (( i=0; i<${#semanas[@]}; i++ )); do
     matriz_sem[$(( i * COLS + 1 ))]=$docs
     matriz_sem[$(( i * COLS + 2 ))]=${kb:-0}
 done
+
 # 5. Mostrar resultados
 echo "--------------------------------------------------"
 echo "=== ARCHIVOS POR EXTENSION ==="
 {
     echo "EXTENSION ARCHIVOS TAMANO_KB"
-    for ext in $(printf '%s\n' "${!conteo[@]}" | sort); do
+    printf '%s\n' "${!conteo[@]}" | sort | while IFS= read -r ext; do
         kb=$(( ${tamano_ext["$ext"]:-0} / 1024 ))
-        echo "$ext ${conteo[$ext]} $kb"
+        echo "$ext ${conteo["$ext"]} $kb"
     done
 } | column -t
 
