@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # ===== CONSTANTES =====
-readonly VERSION="1.0.0"
+readonly SCRIPT_VERSION="1.0.0"
 readonly LOG_FILE="install.log"
 readonly TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
@@ -33,7 +33,7 @@ while [[ $# -gt 0 ]]; do
         --verbose) VERBOSE=true ;;
         --help|-h)
             echo "Uso: $0 [--dry-run] [--verbose]"
-            echo "  --dry-run  Mostrar que haría sin ejecutar"
+            echo "  --dry-run  Mostrar qué haría sin ejecutar"
             echo "  --verbose  Salida detallada"
             exit 0
             ;;
@@ -57,15 +57,21 @@ log() {
     esac
 }
 
+# Inicializar log
+echo "Dev Stack Installer v$SCRIPT_VERSION" > "$LOG_FILE"
+echo "Iniciado: $TIMESTAMP" >> "$LOG_FILE"
+echo "---" >> "$LOG_FILE"
+
 # ===== DETECCION DE OS =====
 detectar_os() {
     log STEP "Detectando sistema operativo"
 
     if [ -f /etc/os-release ]; then
+        # shellcheck source=/dev/null
         source /etc/os-release
-        OS_ID=$ID
-        OS_VERSION=$VERSION_ID
-        OS_NAME=$PRETTY_NAME
+        OS_ID="$ID"
+        OS_VERSION="$VERSION_ID"
+        OS_NAME="$PRETTY_NAME"
     else
         log ERROR "No se puede detectar el OS (/etc/os-release no existe)"
         exit 1
@@ -98,6 +104,7 @@ rollback() {
     local exit_code=$?
     if [ $exit_code -ne 0 ] && [ ${#PAQUETES_INSTALADOS[@]} -gt 0 ]; then
         log WARN "Error detectado. Iniciando rollback..."
+        # Purga los paquetes instalados en esta sesión
         sudo apt purge -y "${PAQUETES_INSTALADOS[@]}" 2>/dev/null || true
         sudo apt autoremove -y 2>/dev/null || true
         log OK "Rollback completado. Paquetes revertidos: ${PAQUETES_INSTALADOS[*]}"
@@ -107,17 +114,18 @@ trap rollback EXIT
 
 # ===== INSTALACION IDEMPOTENTE =====
 instalar_paquete() {
-    local paquete=$1
-    local descripcion=${2:-$paquete}
+    local paquete="$1"
+    local descripcion="${2:-$paquete}"
 
     if $DRY_RUN ; then
-        log INFO "[DRY-RUN] Se instalaria: $paquete"
+        log INFO "[DRY-RUN] Se instalaría: $paquete"
         return 0
     fi
 
-    if dpkg -l "$paquete" &>/dev/null; then
+    # Verificar si ya está instalado (solo para dpkg)
+    if command -v dpkg &>/dev/null && dpkg -l "$paquete" &>/dev/null; then
         local version
-        version=$(dpkg -l "$paquete" | grep "ii" | awk '{print $3}')
+        version=$(dpkg -l "$paquete" 2>/dev/null | grep "ii" | awk '{print $3}')
         log OK "$descripcion ya instalado (v$version) - omitido"
         PAQUETES_OMITIDOS+=("$paquete")
     else
@@ -133,7 +141,7 @@ instalar_paquete() {
     fi
 }
 
-# ===== INSTALAR DEV STACK (lista de paquetes) =====
+# ===== INSTALAR DEV STACK =====
 instalar_dev_stack() {
     log STEP "Actualizando lista de paquetes"
     if ! $DRY_RUN ; then
@@ -153,10 +161,9 @@ instalar_dev_stack() {
     instalar_paquete "python3-pip" "pip3 (gestor de paquetes Python)"
     instalar_paquete "build-essential" "build-essential (compiladores C/C++)"
     instalar_paquete "net-tools" "net-tools (herramientas de red)"
-    # Puedes añadir más si quieres: unzip, tmux, shellcheck, etc.
 }
 
-# ===== CONFIGURACION DE GIT (solo advertencia) =====
+# ===== CONFIGURACION DE GIT =====
 configurar_git_global() {
     log STEP "Verificando configuración global de Git"
     if ! git config --global user.name &>/dev/null; then
@@ -201,7 +208,7 @@ mostrar_resumen() {
 main() {
     echo ""
     echo "========================"
-    echo " DEV STACK INSTALLER v$VERSION"
+    echo " DEV STACK INSTALLER v$SCRIPT_VERSION"
     echo "========================"
     echo ""
 
@@ -217,13 +224,5 @@ main() {
     mostrar_resumen
 }
 
-# Ejecutar main con todos los argumentos
+# Ejecutar main
 main "$@"
-
-# Inicializar log
-echo "Dev Stack Installer v$VERSION" > "$LOG_FILE"
-echo "Iniciado: $TIMESTAMP" >> "$LOG_FILE"
-echo "---" >> "$LOG_FILE"
-
-# Mostrar bienvenida
-echo -e "${BLUE}===== DEV STACK INSTALLER v$VERSION =====${NC}"
