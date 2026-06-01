@@ -29,11 +29,14 @@ sudo ./install-dev-stack.sh --dry-run
 
 # 4. Rollback manual (si se necesita)
 sudo ./rollback.sh
-```bash
+```
 
-Concepts Aplicados
+## Concepts Aplicados
 - **Idempotencia**: verificar antes de instalar, seguro de re-ejecutar
 - **Deteccion de OS**: compatible con Ubuntu, Debian, Linux Mint
 - **Logging estructurado**: registro en archivo con niveles
 - **Rollback con trap**: reversion automatica ante fallos
 - **Verificacion post-instalacion**: reporte de estado
+
+## Paquetes Instalados
+Ver 'docs/packages.md' para la lista completa con justificacion
