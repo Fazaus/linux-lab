@@ -127,6 +127,29 @@ verificar_antiguedad() {
     return 0
 }
 
+# === Verificacion 4: tamano ===
+verificar_tamanio() {
+    log "INFO" "Verificando tamano del directorio de backups..."
+    
+    local tamanio_mb
+    tamanio_mb=$(du -sm "$DIR_BACKUP" | awk '{print $1}')
+    
+    log "INFO" "Tamano total: ${tamanio_mb} MB"
+    
+    if [ "$tamanio_mb" -lt "$MIN_TAMANIO_MB" ]; then
+        log "WARNING" "Directorio pequeno: ${tamanio_mb} MB (minimo: ${MIN_TAMANIO_MB} MB)"
+        return 0
+    fi
+    
+    if [ "$tamanio_mb" -gt "$MAX_TAMANIO_MB" ]; then
+        log "WARNING" "Directorio grande: ${tamanio_mb} MB (maximo: ${MAX_TAMANIO_MB} MB)"
+        return 0
+    fi
+    
+    log "OK" "Tamano dentro del rango: ${tamanio_mb} MB"
+    return 0
+}
+
 # Asegurar que el directorio de logs existe
 mkdir -p "$DIR_LOGS"
 
@@ -144,3 +167,4 @@ fi
 
 verificar_archivos
 verificar_antiguedad
+verificar_tamanio
