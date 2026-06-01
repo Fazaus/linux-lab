@@ -52,6 +52,38 @@ registrar() {
     printf "[%s] [%-7s] %s\n" "$ts" "$nivel" "$mensaje" | tee -a "$LOGFILE"
 }
 
+# Manejo de Ctrl+C: mostrar resumen antes de salir
+trap 'echo ""; registrar "INFO" "Monitor detenido por el usuario."; exit 0' INT
+
+registrar "INFO" "Iniciando monitor - intervalo: ${INTERVALO}s"
+registrar "INFO" "Umbrales: disco=${UMBRAL_DISCO}% RAM=${UMBRAL_RAM}%"
+
+iteracion=0
+
+while true; do
+    iteracion=$((iteracion + 1))
+
+    # Salir si se alcanzo el limite de iteraciones
+    if [ "$MAX_ITER" -gt 0 ] && [ "$iteracion" -gt "$MAX_ITER" ]; then
+        registrar "INFO" "Limite de $MAX_ITER iteraciones alcanzado."
+        break
+    fi
+
+    disco=$(uso_disco)
+    ram=$(uso_ram)
+    cpu=$(carga_cpu)
+
+    registrar "INFO" "Disco:${disco}% RAM:${ram}% CPU-load:${cpu}"
+
+    [ "$disco" -ge "$UMBRAL_DISCO" ] && \
+        registrar "ALERTA" "Disco al ${disco}% (umbral: ${UMBRAL_DISCO}%)"
+
+    [ "$ram" -ge "$UMBRAL_RAM" ] && \
+        registrar "ALERTA" "RAM al ${ram}% (umbral: ${UMBRAL_RAM}%)"
+
+    sleep "$INTERVALO"
+done
+
 # Procesar argumentos con while
 while [ $# -gt 0 ]; do
     case "$1" in
