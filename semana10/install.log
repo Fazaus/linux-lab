@@ -1,0 +1,173 @@
+Dev Stack Installer v1.0.0
+Iniciado: 2026-06-01 02:00:16
+---
+[2026-06-01 02:00:16] [STEP] Detectando sistema operativo
+[2026-06-01 02:00:16] [OK] OS soportado: Ubuntu 24.04.4 LTS
+[2026-06-01 02:00:16] [INFO] OS: ubuntu | Versión: 24.04
+[2026-06-01 02:00:16] [STEP] Actualizando lista de paquetes
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+All packages are up to date.
+[2026-06-01 02:00:16] [OK] Lista de paquetes actualizada
+[2026-06-01 02:00:16] [STEP] Instalando herramientas esenciales
+[2026-06-01 02:00:16] [OK] Git (control de versiones) ya instalado (v1:2.43.0-1ubuntu7.3) - omitido
+[2026-06-01 02:00:16] [OK] curl (transferencia HTTP) ya instalado (v8.5.0-2ubuntu10.9) - omitido
+[2026-06-01 02:00:16] [OK] wget (descarga de archivos) ya instalado (v1.21.4-1ubuntu4.1) - omitido
+[2026-06-01 02:00:16] [OK] vim (editor de texto) ya instalado (v2:9.1.0016-1ubuntu7.14) - omitido
+[2026-06-01 02:00:16] [OK] tree (visualizar directorios) ya instalado (v2.1.1-2ubuntu3.24.04.2) - omitido
+[2026-06-01 02:00:16] [INFO] Instalando htop (monitor de procesos) (htop)...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  lm-sensors strace
+The following NEW packages will be installed:
+  htop
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 171 kB of archives.
+After this operation, 434 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 htop amd64 3.3.0-4build1 [171 kB]
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "es_ES.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Fetched 171 kB in 0s (787 kB/s)
+Selecting previously unselected package htop.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 173917 files and directories currently installed.)
+Preparing to unpack .../htop_3.3.0-4build1_amd64.deb ...
+Unpacking htop (3.3.0-4build1) ...
+Setting up htop (3.3.0-4build1) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+[2026-06-01 02:00:16] [OK] htop (monitor de procesos) instalado correctamente
+[2026-06-01 02:00:16] [INFO] Instalando jq (procesador de JSON) (jq)...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libjq1 libonig5
+The following NEW packages will be installed:
+  jq libjq1 libonig5
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 380 kB of archives.
+After this operation, 1127 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 libonig5 amd64 6.9.9-1build1 [172 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libjq1 amd64 1.7.1-3ubuntu0.24.04.2 [142 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 jq amd64 1.7.1-3ubuntu0.24.04.2 [65.7 kB]
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "es_ES.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Fetched 380 kB in 0s (1047 kB/s)
+Selecting previously unselected package libonig5:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 173927 files and directories currently installed.)
+Preparing to unpack .../libonig5_6.9.9-1build1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.9-1build1) ...
+Selecting previously unselected package libjq1:amd64.
+Preparing to unpack .../libjq1_1.7.1-3ubuntu0.24.04.2_amd64.deb ...
+Unpacking libjq1:amd64 (1.7.1-3ubuntu0.24.04.2) ...
+Selecting previously unselected package jq.
+Preparing to unpack .../jq_1.7.1-3ubuntu0.24.04.2_amd64.deb ...
+Unpacking jq (1.7.1-3ubuntu0.24.04.2) ...
+Setting up libonig5:amd64 (6.9.9-1build1) ...
+Setting up libjq1:amd64 (1.7.1-3ubuntu0.24.04.2) ...
+Setting up jq (1.7.1-3ubuntu0.24.04.2) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+[2026-06-01 02:00:16] [OK] jq (procesador de JSON) instalado correctamente
+[2026-06-01 02:00:16] [OK] Python 3 ya instalado (v3.12.3-0ubuntu2.1) - omitido
+[2026-06-01 02:00:16] [INFO] Instalando pip3 (gestor de paquetes Python) (python3-pip)...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  python3-wheel
+The following NEW packages will be installed:
+  python3-pip python3-wheel
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1373 kB of archives.
+After this operation, 7270 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble/universe amd64 python3-wheel all 0.42.0-2 [53.1 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 python3-pip all 24.0+dfsg-1ubuntu1.3 [1320 kB]
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "es_ES.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Fetched 1373 kB in 0s (3938 kB/s)
+Selecting previously unselected package python3-wheel.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 173945 files and directories currently installed.)
+Preparing to unpack .../python3-wheel_0.42.0-2_all.deb ...
+Unpacking python3-wheel (0.42.0-2) ...
+Selecting previously unselected package python3-pip.
+Preparing to unpack .../python3-pip_24.0+dfsg-1ubuntu1.3_all.deb ...
+Unpacking python3-pip (24.0+dfsg-1ubuntu1.3) ...
+Setting up python3-wheel (0.42.0-2) ...
+Setting up python3-pip (24.0+dfsg-1ubuntu1.3) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+[2026-06-01 02:00:16] [OK] pip3 (gestor de paquetes Python) instalado correctamente
+[2026-06-01 02:00:16] [OK] build-essential (compiladores C/C++) ya instalado (v12.10ubuntu1) - omitido
+[2026-06-01 02:00:16] [INFO] Instalando net-tools (herramientas de red) (net-tools)...
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  net-tools
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 204 kB of archives.
+After this operation, 811 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 net-tools amd64 2.10-0.1ubuntu4.4 [204 kB]
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "es_ES.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+Fetched 204 kB in 0s (892 kB/s)
+Selecting previously unselected package net-tools.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 174662 files and directories currently installed.)
+Preparing to unpack .../net-tools_2.10-0.1ubuntu4.4_amd64.deb ...
+Unpacking net-tools (2.10-0.1ubuntu4.4) ...
+Setting up net-tools (2.10-0.1ubuntu4.4) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+[2026-06-01 02:00:16] [OK] net-tools (herramientas de red) instalado correctamente
+[2026-06-01 02:00:16] [STEP] Verificando configuración global de Git
+[2026-06-01 02:00:16] [WARN] Git: user.name no configurado globalmente
+[2026-06-01 02:00:16] [INFO] Ejecuta: git config --global user.name 'Tu Nombre'
+[2026-06-01 02:00:16] [WARN] Git: user.email no configurado globalmente
+[2026-06-01 02:00:16] [INFO] Ejecuta: git config --global user.email 'tu@email.com'
+[2026-06-01 02:00:16] [OK] Instalacion completada exitosamente
